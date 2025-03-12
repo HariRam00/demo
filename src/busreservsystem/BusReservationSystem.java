@@ -22,14 +22,16 @@ public class BusReservationSystem {
             sc.nextLine();
 
             switch (option) {
-                case 1 :
-                    manager.viewBuses();
-                    break;
-                case 2 :{
+                case 1 -> manager.viewBuses();
+                case 2 -> {
+                    System.out.print("Enter bus type (A/C Sleeper, Non A/C Sleeper, etc.): ");
+                    String type = sc.nextLine().trim();
+                    System.out.print("Enter pickup location: ");
+                    String pickup = sc.nextLine().trim();
+                    System.out.print("Enter drop location: ");
+                    String drop = sc.nextLine().trim();
                     System.out.print("Enter name: ");
                     String name = sc.nextLine().trim();
-                    System.out.print("Enter bus number: ");
-                    int busNumber = sc.nextInt();
                     System.out.print("Enter age: ");
                     int age = sc.nextInt();
 
@@ -38,26 +40,24 @@ public class BusReservationSystem {
                         break;
                     }
 
-                    manager.bookTicket(busNumber, name, age);
-                    break;
+                    manager.bookTicket(type, pickup, drop, name, age);
                 }
-
-                case 3 :{
+                case 3 -> {
                     System.out.print("Enter bus number: ");
                     int busNumber = sc.nextInt();
                     sc.nextLine();
                     System.out.print("Enter passenger name: ");
                     String name = sc.nextLine();
                     manager.cancelTicket(busNumber, name);
-                    break;
                 }
-                case 4 :{
+                case 4 -> {
                     System.out.println("Exiting... Goodbye!");
                     sc.close();
                     return;
                 }
-                default : System.out.println("Invalid option! Choose again.");
+                default -> System.out.println("Invalid option! Choose again.");
             }
         }
     }
 }
+
