@@ -4,7 +4,7 @@ class Bus {
     private final int busNumber;
     private final String type;
     private final int capacity;
-    private double fare;
+    private final double fare;
     private int availableSeats;
     private final String pickupLocation;
     private final String dropLocation;
