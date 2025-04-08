@@ -7,8 +7,8 @@ public class BusReservationSystem {
         Scanner sc = new Scanner(System.in);
         ReservationManager manager = new ReservationManager();
 
-        manager.addBus(101, "A/C Sleeper", 45, 550, "Kanyakumari", "Chennai", "08:00 AM");
-        manager.addBus(102, "Non A/C Sleeper", 40, 300, "Kanyakumari", "Coimbatore", "09:30 AM");
+        manager.addBus(101, "A/C Sleeper", 45, 550, "Kanyakumari", "Chennai", "08:00 AM","08-04-2025");
+        manager.addBus(102, "Non A/C Sleeper", 40, 300, "Kanyakumari", "Chennai", "08:00 AM","08-04-2025");
 
         while (true) {
             System.out.println("\n========== BUS RESERVATION SYSTEM ==========");
@@ -26,8 +26,10 @@ public class BusReservationSystem {
                 case 2 -> {
                     System.out.print("Enter bus type (A/C Sleeper, Non A/C Sleeper, etc.): ");
                     String type = sc.nextLine().trim();
+                    System.out.print("Enter Date of travel (DD-MM-YYYY): ");
+                    String date = sc.nextLine().trim();
                     System.out.print("Enter pickup location: ");
-                    String pickup = sc.nextLine().trim();
+                    String pickup = sc.nextLine();
                     System.out.print("Enter drop location: ");
                     String drop = sc.nextLine().trim();
                     System.out.print("Enter name: ");
@@ -40,7 +42,7 @@ public class BusReservationSystem {
                         break;
                     }
 
-                    manager.bookTicket(type, pickup, drop, name, age);
+                    manager.bookTicket(type, pickup, drop, name, age,date);
                 }
                 case 3 -> {
                     System.out.print("Enter bus number: ");
@@ -51,7 +53,7 @@ public class BusReservationSystem {
                     manager.cancelTicket(busNumber, name);
                 }
                 case 4 -> {
-                    System.out.println("Exiting... Goodbye!");
+                    System.out.println("Exiting... Thank you for visiting!!!");
                     sc.close();
                     return;
                 }

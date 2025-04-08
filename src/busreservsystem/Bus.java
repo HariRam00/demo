@@ -9,8 +9,9 @@ class Bus {
     private final String pickupLocation;
     private final String dropLocation;
     private final String arrivalTime;
+    private final String date;
 
-    public Bus(int busNumber, String type, int capacity, double fare, String pickupLocation, String dropLocation, String arrivalTime) {
+    public Bus(int busNumber, String type, int capacity, double fare, String pickupLocation, String dropLocation, String arrivalTime, String date) {
         this.busNumber = busNumber;
         this.type = type;
         this.capacity = capacity;
@@ -19,6 +20,7 @@ class Bus {
         this.pickupLocation = pickupLocation;
         this.dropLocation = dropLocation;
         this.arrivalTime = arrivalTime;
+        this.date = date;
     }
 
     public boolean bookSeats() {
@@ -40,9 +42,10 @@ class Bus {
     public String getPickupLocation() { return pickupLocation; }
     public String getDropLocation() { return dropLocation; }
     public String getArrivalTime() { return arrivalTime; }
+    public String getDate() {return date;}
 
     public void displayBusInfo() {
         System.out.println("Bus Number: " + busNumber + " | Type: " + type + " | Available Seats: " + availableSeats +
-                " | Pickup: " + pickupLocation + " | Drop: " + dropLocation + " | Arrival Time: " + arrivalTime + " | Fare: ₹" + fare);
+                " | Pickup: " + pickupLocation + " | Drop: " + dropLocation + " | Arrival Time: " + arrivalTime + " | Fare: ₹" + fare+" | Date : "+date);
     }
 }

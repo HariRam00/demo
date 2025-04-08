@@ -7,8 +7,8 @@ class ReservationManager {
     private final List<Bus> buses = new ArrayList<>();
     private final List<Passenger> passengers = new ArrayList<>();
 
-    public void addBus(int busNumber, String type, int capacity, double fare, String pickup, String drop, String arrivalTime) {
-        buses.add(new Bus(busNumber, type, capacity, fare, pickup, drop, arrivalTime));
+    public void addBus(int busNumber, String type, int capacity, double fare, String pickup, String drop, String arrivalTime, String date) {
+        buses.add(new Bus(busNumber, type, capacity, fare, pickup, drop, arrivalTime, date));
     }
 
     public void viewBuses() {
@@ -22,9 +22,9 @@ class ReservationManager {
         }
     }
 
-    public void bookTicket(String type, String pickup, String drop, String name, int age) {
+    public void bookTicket(String type, String pickup, String drop, String name, int age, String date) {
         for (Bus b : buses) {
-            if (b.getType().equalsIgnoreCase(type) && b.getPickupLocation().equalsIgnoreCase(pickup) && b.getDropLocation().equalsIgnoreCase(drop)) {
+            if (b.getType().equalsIgnoreCase(type) && b.getPickupLocation().equalsIgnoreCase(pickup) && b.getDropLocation().equalsIgnoreCase(drop)&&b.getDate().equalsIgnoreCase(date)) {
                 if (b.bookSeats()) {
                     passengers.add(new Passenger(name, age, b.getBusNumber()));
                     System.out.println("Booking confirmed for " + name + "! Bus Number: " + b.getBusNumber() + " | Fare: ₹" + b.getFare() + " | Arrival Time: " + b.getArrivalTime());
@@ -34,6 +34,12 @@ class ReservationManager {
                     return;
                 }
             }
+
+            if (!b.getDate().equalsIgnoreCase(date)){
+                System.out.println("No buses available for given date... or Check your date!!!");
+                return;
+            }
+
         }
         System.out.println("No matching bus found for your criteria!");
     }
